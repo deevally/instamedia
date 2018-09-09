@@ -18,7 +18,7 @@ ig.use({
 
 //The URL we set when registering our application.
 
-var redirect_uri = "http://localhost:3000/handleauth"
+var redirect_uri = "https://geraldanosike.github.io/Portfolio"
 
 
 //ROUTES
