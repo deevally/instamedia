@@ -93,3 +93,9 @@ ig.user_media_recent(myaccessToken, function(err, result, pagination, remaining,
 app.listen(3000, function(){
   console.log("Instagram API server has started");
 });
+
+
+
+app.listen(process.env.PORT, process.env.IP, function(){
+  console.log("server started");
+});
