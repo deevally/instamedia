@@ -1,0 +1,32 @@
+<% include  ../partials/header.ejs %>
+
+
+<div class="container">
+<div class="row">
+  <% result.forEach(function(insta){ %>
+
+<div class="col-sm-3">
+ <a href="<%= insta.link %>" target="_blank">
+<img src=" <%=insta.images.standard_resolution.url %>" class="img-thumbnail" alt="">
+</a>
+
+<div class="likes d-inline">
+  <i class="fas fa-heart"></i><%= insta.likes.count %>
+</div>
+
+<div class="comment d-inline">
+  <i class="fas fa-comment"></i><%= insta.comments.count %>
+</div>
+
+</div>
+
+
+    <% }) %>
+</div>
+
+
+
+
+</div>
+
+<% include ../partials/footer.ejs %>
