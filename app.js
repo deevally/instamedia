@@ -11,15 +11,18 @@ var request = require("request");
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+
 ig.use({
 
   client_id: process.env.client_id,
   client_secret : process.env.client_secret
 });
 
+
+
 //The URL we set when registering our application.
 
-var redirect_uri = "https://geraldanosike.github.io/Portfolio"
+var redirect_uri =  process.env.base_url +"/handleauth"
 
 
 //ROUTES
@@ -33,31 +36,24 @@ app.get("/authorize_user", function(req, res){
   res.redirect(ig.get_authorization_url(
     redirect_uri, { 
                     scope: ["public_content", "likes"],
-                    state: "a state"
+                    state : " a state"
+                
                   }) 
                 );
 });
 
 
 
-/*
-
-
-*/
-
 // This is your redirect URI
 
-app.get('/handleauth', function(req, res) {
+app.get("/handleauth", function(req, res) {
   ig.authorize_user(req.query.code, redirect_uri, function(err, result) {
     if (err) {
-      console.log(err.body);
-      res.send("Didn't work");
+     // console.log(err.body);
+      res.send(err);
     } else {
       accessToken = result.access_token;
 
-      console.log('Yay! Access token is ' + accessToken);
-     //res.send('workeddddddd');
-     // accessToken = result.access_token;
  res.redirect("/instagram");
    //res.redirect("/location");
 
