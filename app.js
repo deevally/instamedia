@@ -12,8 +12,9 @@ var request = require("request");
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 ig.use({
-  client_id: "e427718cbcf74fe2958bb8ca51215113",
-  client_secret : "4db7210245a64eb0a669f17eff263f9d"
+
+  client_id: process.env.client_id,
+  client_secret : process.env.client_secret
 });
 
 //The URL we set when registering our application.
